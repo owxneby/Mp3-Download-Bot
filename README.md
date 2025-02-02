@@ -1,2 +1,2 @@
-# Mp3-Downloader-Bot
-A python based mp3 downloader bot
+# Mp3-Download-Bot
+A python based bot for mass locating and downloading mp3 files locally
