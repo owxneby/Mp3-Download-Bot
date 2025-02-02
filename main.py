@@ -204,15 +204,13 @@ def process_music_query(driver, query):
 
 def get_last_processed_url_index():
     """Returns the index of the last processed URL from OUTPUT_FILE."""
-    if not os.path.exists(OUTPUT_FILE):
-        return -1  # No URLs processed yet
+    if not os.path.exists(OUTPUT_FILE) or os.path.getsize(OUTPUT_FILE) == 0:
+        return 0  # Start from the beginning if the output file doesn't exist or is empty
     
     with open(OUTPUT_FILE, 'r') as file:
         lines = file.readlines()
-        if not lines:
-            return -1
-        last_url = lines[-1].strip()
-        return len(lines)  # The number of processed URLs (starting from 0)
+        return len(lines)  # Return the number of processed URLs (starting from 0)
+
 
 def ensure_files_exist():
     """Creates output and unlinked files if they do not already exist."""
