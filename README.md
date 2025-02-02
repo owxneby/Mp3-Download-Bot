@@ -48,3 +48,87 @@ Once the bot finishes processing the entire list, it runs the "run.sh" script wh
 - Firefox WebDriver (or other drivers depending on your browser)
 - `yt-dlp` (for downloading the songs)
 
+### Installation:
+
+4. Clone this repository:
+    
+    bash
+    
+    Copy
+    
+    `git clone https://github.com/owxneby/Mp3-Download-Bot.git cd Mp3-Download-Bot`
+    
+5. Install the required Python dependencies:
+    
+    bash
+    
+    Copy
+    
+    `python 3 -m pip install -r requirements.txt`
+    
+6. Install yt-dlp: Follow the official installation instructions available on their GitHub page:
+https://github.com/yt-dlp/yt-dlp/wiki/Installation
+
+You can also install it via pip directly:
+    
+    bash
+    
+    Copy
+    
+    `python3 -m pip install -U "yt-dlp[default]"`
+    
+7. Set up the Firefox WebDriver (or use a different browser of your choice. I plan on building for alternate webdrivers).
+
+    
+
+### Usage:
+
+8. Place your list of song names in the `list.txt` file. Each line should contain a song name.
+    
+9. Run the bot:
+    
+    bash
+    
+    Copy
+    
+    `python main.py`
+    
+10. The bot will start processing the list and will output the results to `url_list.txt` (for successful finds) and `unlinked.txt` (for failed searches).
+    
+
+### Running the Batch Download
+
+Once the bot finishes, it wil initiate the run.shyou can run the following command to download all songs using `yt-dlp`:
+
+bash
+
+Copy
+
+`yt-dlp -a url_list.txt`
+
+## Project Structure
+
+bash
+
+Copy
+
+`song-downloader-bot/ │ 
+├── main.py              # Python bot that handles song search and URL extraction 
+├── run.sh              # Shell script for batch downloading via yt-dlp (automatically executed by the bot)
+├── list.txt            # Input file containing the list of song names 
+├── url_list.txt        # Output file containing the successfully found song URLs 
+├── unlinked.txt        # Output file for songs that couldn't be found 
+└── requirements.txt     # Python dependencies
+
+## Conclusion
+
+This project started as a simple solution to automate song downloading for a mixtape, but it grew into a more robust Python bot that can handle large lists of songs, search for them, and download them automatically. Whether you're a DJ, a music enthusiast, a person trying to build a local music library or anyone who needs to collect music in bulk, this tool can save you a lot of time!
+
+## Future Plans
+
+I plan on expanding the support for additional WebDrivers, such as Safari and Chrome, and providing improved compatibility for different operating systems, including Windows and macOS. This will make the bot more versatile and easier to run on various platforms.
+
+Additionally, I’m considering transforming the bot into a web server in the future, so it can be accessed and controlled via a web interface. This would make it even easier to manage and automate the song downloading process without needing to interact with the code directly.
+
+Feel free to contribute to the project by submitting issues or pull requests. You’re welcome to use and modify the code for your own needs, and I appreciate any improvements or optimizations you might suggest. Let’s build something great together!
+
